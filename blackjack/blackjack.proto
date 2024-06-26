@@ -1,6 +1,6 @@
 syntax = "proto3";
 package blackjack;
-option go_package = "./blackjack";
+option go_package = "./pb_blackjack";
 
 import "google/protobuf/empty.proto";
 import "proto/blackjack/messages.proto";
@@ -9,8 +9,10 @@ import "proto/blackjack/messages.proto";
 
 
 service BlackJackService {
-    rpc ViewGames(google.protobuf.Empty)
+    rpc ViewGames(blackjack.ViewGamesRequest)
         returns (blackjack.ViewGamesResponse) {}
-    rpc StartGame(google.protobuf.Empty) returns (blackjack.StartGameResponse) {}
-    rpc JoinGame(blackjack.JoinGameRequest) returns (blackjack.JoinGameResponse) {}
+    rpc CreateGame(blackjack.StartGameRequest)
+        returns (blackjack.StartGameResponse) {}
+    rpc PlayGame(stream blackjack.PlayGameRequest)
+        returns (stream blackjack.JoinGameResponse) {}
 }

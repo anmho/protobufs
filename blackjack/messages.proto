@@ -1,12 +1,15 @@
 syntax = "proto3";
 package blackjack;
-option go_package = "./blackjack";
+option go_package = "./pb_blackjack";
 import "proto/blackjack/game.proto";
 
+
+message StartGameRequest {}
 message StartGameResponse {
   string gameId = 1;
 }
 
+message ViewGamesRequest {}
 message ViewGamesResponse {
   repeated blackjack.Game games = 1;
 }
@@ -16,5 +19,18 @@ message JoinGameRequest {
 }
 
 message JoinGameResponse {
+}
+
+message PlayGameRequest {
+  oneof request {
+    BlackjackMove blackjackMove = 1;
+  }
+}
+
+message PlayGameResponse {
+  Game game = 1;
+}
+
+message BlackjackMove {
 
 }
