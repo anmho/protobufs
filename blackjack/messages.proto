@@ -1,0 +1,20 @@
+syntax = "proto3";
+package blackjack;
+option go_package = "./blackjack";
+import "proto/blackjack/game.proto";
+
+message StartGameResponse {
+  string gameId = 1;
+}
+
+message ViewGamesResponse {
+  repeated blackjack.Game games = 1;
+}
+
+message JoinGameRequest {
+  string gameId  = 1;
+}
+
+message JoinGameResponse {
+
+}
