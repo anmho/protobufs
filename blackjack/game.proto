@@ -1,6 +1,6 @@
 syntax = "proto3";
 package blackjack;
-option go_package = "./blackjack";
+option go_package = "./pb_blackjack";
 import "google/protobuf/timestamp.proto";
 
 enum Suit {
