@@ -1,7 +1,6 @@
 syntax = "proto3";
 package blackjack;
 option go_package = "./pb_blackjack";
-import "google/protobuf/timestamp.proto";
 
 
 enum Suit {
@@ -37,13 +36,36 @@ message Hand {
   repeated Card cards = 1;
 }
 
+message Dealer {
+  Hand hand = 2;
+}
+
 message Player {
   string id = 1;
   Hand hand = 2;
+  uint64 wager = 3;
+  uint64 bankroll = 4;
 }
 message Game {
   string id = 1;
-  google.protobuf.Timestamp createdAt = 2;
-  int32 players = 3;
-
+  repeated Player players = 3;
+  Dealer dealer = 4;
 }
+
+enum BlackjackMoveType {
+  HIT = 0;
+  STAND = 1;
+  DOUBLE = 2;
+  SPLIT = 3;
+  SURRENDER = 4;
+}
+message HitMove {}
+
+message StandMove {}
+
+message DoubleMove {}
+
+message SplitMove {}
+
+message SurrenderMove {}
+

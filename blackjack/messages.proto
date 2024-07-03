@@ -4,41 +4,28 @@ option go_package = "./pb_blackjack";
 import "proto/blackjack/game.proto";
 
 
-message CreateGameRequest {
-  string gameId = 1;
-}
+message ViewGamesRequest {}
 
-message CreateGameResponse {
-
-}
-
-message ViewGamesRequest {
-
-}
 message ViewGamesResponse {
   repeated blackjack.Game games = 1;
 }
 
 message BlackjackRequest {
-  oneof request {
+  oneof action {
     JoinGame joinGame = 1;
-    BlackjackMove move = 2;
+    StartGame startGame = 2;
+    BlackjackMove move = 3;
   }
 }
 message BlackjackResponse {
-  oneof response {
-    JoinGameResponse joinGame = 1;
+  oneof result {
+    JoinGameResult joinGame = 1;
+    BlackjackResult blackjackResult = 2;
   }
-}
-message JoinGame {
-  string gameId  = 1;
-}
-
-message JoinGameResponse {
 }
 
 message PlayGameRequest {
-  oneof request {
+  oneof action {
     BlackjackMove blackjackMove = 1;
   }
 }
@@ -48,7 +35,22 @@ message PlayGameResponse {
 }
 
 message BlackjackMove {
-
+  oneof move {
+      HitMove hitMove = 1;
+      StandMove standMove = 2;
+      DoubleMove doubleMove = 3;
+      SplitMove splitMove = 4;
+      SurrenderMove surrenderMove = 5;
+  }
 }
 
+message JoinGame {
+  string gameId  = 1;
+}
 
+message JoinGameResult {
+  bool success = 1;
+}
+
+message BlackjackResult {}
+message StartGame {}
