@@ -8,8 +8,6 @@ import "proto/blackjack/messages.proto";
 
 
 service BlackJackService {
-    rpc ViewGames(blackjack.ViewGamesRequest)
-        returns (blackjack.ViewGamesResponse) {}
-    rpc PlayGame(stream blackjack.BlackjackRequest)
+    rpc Connect(stream blackjack.BlackjackRequest)
         returns (stream blackjack.BlackjackResponse) {}
 }
