@@ -13,6 +13,7 @@ message BlackjackRequest {
     PlayGameRequest blackjackMove = 3;
     ViewGamesRequest viewGamesRequest = 4;
     LeaveGameRequest leaveGameRequest = 5;
+    ViewCurrentGameRequest viewCurrentGameRequest = 6;
   }
 }
 message BlackjackResponse {
@@ -22,6 +23,7 @@ message BlackjackResponse {
     PlayGameResult playGameResult = 3;
     ViewGamesResult viewGamesResult = 4;
     LeaveGameResult leaveGameResult = 5;
+    ViewCurrentGameResult viewCurrentGameResult = 6;
   }
 }
 
@@ -59,4 +61,7 @@ message LeaveGameRequest {}
 message LeaveGameResult {}
 
 message ViewCurrentGameRequest {}
-message ViewCurrentGameResult {}
+message ViewCurrentGameResult {
+  Player player = 1;
+  Game game = 2;
+}

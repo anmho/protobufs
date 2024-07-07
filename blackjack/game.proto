@@ -46,10 +46,19 @@ message Player {
   uint64 wager = 3;
   uint64 bankroll = 4;
 }
+
+
 message Game {
   string id = 1;
   repeated Player players = 3;
   Dealer dealer = 4;
+
+  enum GameStatus {
+    WAITING_FOR_PLAYERS = 0;
+    IN_PROGRESS = 1;
+  }
+
+  GameStatus status = 5;
 }
 
 enum BlackjackMoveType {
