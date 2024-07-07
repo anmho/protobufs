@@ -44,6 +44,7 @@ message PlayGameResult {}
 
 message JoinGameRequest {
   string gameId  = 1;
+  string username = 2;
 }
 message JoinGameResult {
   bool success = 1;
@@ -56,3 +57,6 @@ message StartGameResult {
 
 message LeaveGameRequest {}
 message LeaveGameResult {}
+
+message ViewCurrentGameRequest {}
+message ViewCurrentGameResult {}

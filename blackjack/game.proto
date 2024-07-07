@@ -35,8 +35,9 @@ message Hand {
   repeated Card cards = 1;
 }
 
+
 message Dealer {
-  Hand hand = 2;
+  Hand hand = 1;
 }
 
 message Player {
